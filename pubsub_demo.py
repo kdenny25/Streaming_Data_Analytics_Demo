@@ -13,11 +13,6 @@ pnconfig.user_id = PUBNUB_USER_ID
 
 pubnub = PubNub(pnconfig)
 
-def video_streaming_function(streamer_id, resolution):
-    # begin streaming video
-
-def chat_streaming_function(streamer_id):
-    # begin streaming chat details
 def my_publish_callback(envelope, status):
     # check whether request successfully completed or not
     if not status.is_error():
@@ -39,8 +34,6 @@ class MySubscribeCallback(SubscribeCallback):
             # Connect event. You can do stuff like publish, and know you'll get it.
             # or use the connected event to confirm you are subscribed for
             # UI / internal notifications, etc
-            video_streaming_function('some_streamer', '1080p')
-            chat_streaming_function('some_streamer')
             pubnub.publish().channel('my_channel').message('Hello World!').pn_async(my_publish_callback)
         elif status.category == PNStatusCategory.PNReconnectedCategory:
             pass
