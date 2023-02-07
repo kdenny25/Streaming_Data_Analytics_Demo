@@ -1,6 +1,19 @@
+# AWS library
 boto3
+
+# Dataframe libaray
 pandas
 
+# publish subscribe data streaming
 pubnub
 
+# .env handler
 python-dotenv
+
+# cluster library
+pyspark
+
+# tweet classification
+textblob
+
+googletrans
