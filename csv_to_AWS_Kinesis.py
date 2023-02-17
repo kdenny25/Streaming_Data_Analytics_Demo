@@ -1,8 +1,6 @@
 import boto3
 import pandas as pd
 import time
-import requests
-from json import loads
 
 
 # creat a client for aws
@@ -92,32 +90,14 @@ def main():
     # create kinesis client
     kinesis = create_client('kinesis', 'us-east-1')
 
-    # api endpoint
-    data_stream = 'https://pubsub.pubnub.com/stream/sub-c-99084bc5-1844-4e1c-82ca-a01b18166ca8/pubnub-market-orders/0/10000'
+    # load in data from csv
+    data = load_data('./data/titanic_train.csv')
 
     # send data to kinesis data stream
     stream_name = 'CS367_Streaming_Data_Analytics'
     stream_shard_count = 1
 
-    s = requests.Session()
-    headers = {'symbol'}
-    # GET request to data stream
-    with s.get(data_stream, stream=True) as resp:
-        for line in resp.iter_lines():
-            if line:
-                msg = line.decode()[2:-22]
-                if (len(msg) < 200):
-                    msg = pd.DataFrame([msg])
-                    print(msg)
-                    send_kinesis(kinesis, stream_name, stream_shard_count, msg)
-
-
-    # load in data from csv
-    #data = load_data('./data/titanic_train.csv')
-
-
-
-
+    send_kinesis(kinesis, stream_name, stream_shard_count, data)
 
     end = time.time()
     print('Runtime:' + str(end-start))

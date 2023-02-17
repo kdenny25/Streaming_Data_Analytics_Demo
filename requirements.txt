@@ -17,3 +17,11 @@ pyspark
 textblob
 
 googletrans
+
+# kafka data streaming library
+kafka-python
+
+requests
+
+# machine learning library
+scikit-learn

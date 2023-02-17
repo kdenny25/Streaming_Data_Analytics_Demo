@@ -60,14 +60,13 @@ class MySubscribeCallback(SubscribeCallback):
 
     def message(self, pubnub, message):
         # Handle new message stored in message.message
-
         msg = message.message
         if 'extended_tweet' in msg:
             msg = msg['extended_tweet']['full_text']+'t_end'
-            #print(msg)
+            print(msg)
         else:
             msg = msg['text']+'t_end'
-            #print(msg)
+            print(msg)
 
         msg = re.sub(r'http\S+', '', msg)
         msg = re.sub('@\w+', '', msg)
