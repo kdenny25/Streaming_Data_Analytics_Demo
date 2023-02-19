@@ -13,19 +13,37 @@ data_stream ='https://pubsub.pubnub.com/stream/sub-c-99084bc5-1844-4e1c-82ca-a01
 
 spark = SparkSession \
     .builder \
-    .appName('stream_stock_data') \
+    .appName('stream_crypto_data') \
     .getOrCreate()
 
-schema = StructType([StructField('symbol', StringType(), True),
-                     StructField('order_quantity', IntegerType(), True),
-                     StructField('bid_price', FloatType(), True),
-                     StructField('trade_type', StringType(), True),
-                     StructField('timestamp', TimestampType(), True)])
+schema = StructType([StructField('type', StringType()),
+                     StructField('sequence', IntegerType()),
+                     StructField('product_id', StringType()),
+                     StructField('price', FloatType()),
+                     StructField('open_24h', FloatType()),
+                     StructField('volume_24h', FloatType()),
+                     StructField('low_24h', FloatType()),
+                     StructField('high_24h', FloatType()),
+                     StructField('volume_30d', FloatType()),
+                     StructField('best_bid', FloatType()),
+                     StructField('best_bid_size', FloatType()),
+                     StructField('best_ask', FloatType()),
+                     StructField('best_ask_size', FloatType()),
+                     StructField('side', StringType()),
+                     StructField('time', DateType()),
+                     StructField('trade_id', IntegerType()),
+                     StructField('last_size', FloatType())])
+
+
 
 df = spark \
     .readStream \
-    .format('http') \
-    .option('endpoint', 'data_stream') \
+    .format('socket') \
+    .option('host', 'wss://ws-feed.exchange.coinbase.com') \
+    .option('port', '9090') \
     .load()
 
-print(df.isStreaming())
+print(df.isStreaming)
+
+value_df = df.select(from_json(col('value').cast('string'), schema).alias('value'))
+

@@ -25,3 +25,6 @@ requests
 
 # machine learning library
 scikit-learn
+
+# json handling
+simplejson
