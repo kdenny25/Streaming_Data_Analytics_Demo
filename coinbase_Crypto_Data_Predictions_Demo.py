@@ -54,7 +54,7 @@ for value in data:
 
     new_row = pd.DataFrame([values], columns=columns[:7])
 
-    if new_row['time'][0] is not None:
+    if new_row['time'][0] is not None:   
         new_row['time'] = new_row['time'].apply(lambda x: pd.Timestamp(x).timestamp())
 
     if initial_start is False and iterations <= num_iterations:
