@@ -19,11 +19,11 @@ disregard.
 
 # File Descriptions:
 
-kafka_producer.py - **[Operational]** Streams data from a Pub/Nub http endpoint and sends it locally.
-coinbase_Crypto_Data_Predictions_Demo - **[Operational]** Streams data from Coinbase and makes predictions
-csv_to_AWS_Kinesis - **[Operational]** Streams data from a csv file to AWS Kinesis
-pubsub_Stock_Data_Demo - **[Operational]** Streams and filters stock data from PubNub
-pubsub_Twitter_Data_Demo - **[Operational]** Streams tweets from Twitter, tranlates and identifies common noun phrases
-pySpark_AWS_Kinesis_Demo - **[Non-Operational]** Streams data into PySpark from Kinesis
-pySpark_http_request_demo
+* kafka_producer.py - **[Operational]** Streams data from a Pub/Nub http endpoint and sends it locally.
+* coinbase_Crypto_Data_Predictions_Demo - **[Operational]** Streams data from Coinbase and makes predictions
+* csv_to_AWS_Kinesis - **[Operational]** Streams data from a csv file to AWS Kinesis
+* pubsub_Stock_Data_Demo - **[Operational]** Streams and filters stock data from PubNub
+* pubsub_Twitter_Data_Demo - **[Operational]** Streams tweets from Twitter, tranlates and identifies common noun phrases
+* pySpark_AWS_Kinesis_Demo - **[Non-Operational]** Streams data into PySpark from Kinesis
+* pySpark_http_request_demo
 
