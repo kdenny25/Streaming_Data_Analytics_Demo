@@ -12,7 +12,7 @@ the results are stored in a csv.
 
 In the fourth part the stock data is analyzed using sci-kit learn to predict future market orders.
 
-https://www.pubnub.com/demos/real-time-data-streaming/
+
 
 Note: There are several attempts to use pySpark with Kinesis and Kafka. These are failed attempts so please
 disregard.
